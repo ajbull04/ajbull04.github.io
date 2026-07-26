@@ -32,7 +32,7 @@ jobs:
 
       - name: Build project
         run: npm run build
-        env:
+        # env:
           # GITHUB_PAGES: "true"
 
       - name: Upload build files
