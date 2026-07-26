@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SectionHeading from "@/components/SectionHeading";
 
 const education = {
   school: "Duke University",
@@ -62,70 +63,54 @@ const experiences = [
 ];
 
 const ExperienceSection = () => (
-  <section id="experience" className="py-32 px-8 bg-card/30">
+  <section id="experience" className="border-y border-ink/15 bg-paper-deep/60 px-6 py-28 lg:px-10">
     <div className="container mx-auto">
+      <SectionHeading index="02" label="Track record" title="Where I've built, taught, and shipped." />
+
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-        className="mb-16"
-      >
-        <p className="font-display text-sm uppercase tracking-[0.3em] text-primary mb-3">Background</p>
-        <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground">
-          Education & experience<span className="text-gradient-coral">.</span>
-        </h2>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: -40 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.6 }}
-        className="group relative grid md:grid-cols-[200px_1fr] gap-6 md:gap-12 py-10 border-b border-border hover:bg-secondary/30 -mx-6 px-6 rounded-xl transition-colors duration-300"
       >
-        <p className="font-display text-sm text-muted-foreground whitespace-nowrap pt-1">{education.subtitle}</p>
-        <div className="space-y-3">
-          <h3 className="font-display text-xl font-bold text-foreground group-hover:text-gradient-coral transition-colors">
-            {education.school}
-          </h3>
-          <p className="font-display text-sm font-medium text-primary max-w-2xl">{education.headline}</p>
-          <ul className="list-disc pl-5 space-y-2 text-muted-foreground font-body leading-relaxed max-w-2xl">
-            {education.bullets.map((b) => (
-              <li key={b}>{b}</li>
-            ))}
-          </ul>
+        <div className="group grid gap-4 border-t border-ink/20 py-8 md:grid-cols-[190px_1fr] md:gap-10">
+          <p className="label-mono pt-1.5 text-muted-foreground">{education.subtitle}</p>
+          <div className="space-y-3">
+            <h3 className="font-display text-xl font-bold text-foreground transition-colors duration-300 group-hover:text-primary">
+              {education.school}
+            </h3>
+            <p className="max-w-2xl font-mono text-sm text-primary">{education.headline}</p>
+            <ul className="max-w-2xl list-disc space-y-2 pl-5 font-body leading-relaxed text-muted-foreground">
+              {education.bullets.map((b) => (
+                <li key={b}>{b}</li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </motion.div>
 
-      <div className="space-y-0">
-        {experiences.map((exp, i) => (
-          <motion.div
+        {experiences.map((exp) => (
+          <div
             key={`${exp.company}-${exp.role}-${exp.period}`}
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: i * 0.08 }}
-            className="group relative grid md:grid-cols-[200px_1fr] gap-6 md:gap-12 py-10 border-b border-border last:border-b-0 hover:bg-secondary/30 -mx-6 px-6 rounded-xl transition-colors duration-300"
+            className="group grid gap-4 border-t border-ink/20 py-8 md:grid-cols-[190px_1fr] md:gap-10"
           >
-            <p className="font-display text-sm text-muted-foreground whitespace-nowrap pt-1">{exp.period}</p>
+            <p className="label-mono pt-1.5 text-muted-foreground">{exp.period}</p>
             <div className="space-y-3">
-              <h3 className="font-display text-xl font-bold text-foreground group-hover:text-gradient-coral transition-colors">
+              <h3 className="font-display text-xl font-bold text-foreground transition-colors duration-300 group-hover:text-primary">
                 {exp.role}
               </h3>
-              <p className="font-display text-sm font-medium text-primary">
+              <p className="font-mono text-sm text-primary">
                 {exp.company}
                 {exp.location ? ` · ${exp.location}` : ""}
               </p>
-              <ul className="list-disc pl-5 space-y-2 text-muted-foreground font-body leading-relaxed max-w-2xl">
+              <ul className="max-w-2xl list-disc space-y-2 pl-5 font-body leading-relaxed text-muted-foreground">
                 {exp.bullets.map((b) => (
                   <li key={b}>{b}</li>
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </div>
         ))}
-      </div>
+      </motion.div>
     </div>
   </section>
 );

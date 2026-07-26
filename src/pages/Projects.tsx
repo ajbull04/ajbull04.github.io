@@ -11,6 +11,14 @@ import {
 } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
+const chipClass = (active: boolean) =>
+  cn(
+    "label-mono border px-4 py-2.5 transition-colors duration-200",
+    active
+      ? "border-primary bg-primary text-primary-foreground"
+      : "border-ink/25 text-muted-foreground hover:border-primary hover:text-primary",
+  );
+
 const Projects = () => {
   const [selected, setSelected] = useState<ProjectCategory[]>([]);
 
@@ -25,87 +33,75 @@ const Projects = () => {
   const clearFilters = () => setSelected([]);
 
   return (
-    <motion.div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="container mx-auto px-8 pt-32 pb-32">
+      <main className="container mx-auto px-6 pb-28 pt-32 lg:px-10">
         <Link
           to="/#projects"
-          className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary font-display text-sm mb-10 transition-colors"
+          className="label-mono inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="h-3.5 w-3.5" />
           Back to home
         </Link>
 
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-8 border-t border-ink/25 pt-6"
         >
-          <p className="font-display text-sm uppercase tracking-[0.3em] text-primary mb-3">Portfolio</p>
-          <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground">
-            All Projects<span className="text-gradient-coral">.</span>
+          <p className="label-mono text-primary">Everything</p>
+          <h1 className="mt-4 max-w-2xl font-display text-4xl font-extrabold leading-[0.95] text-foreground md:text-6xl">
+            Every project, filed by what it is.
           </h1>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-12 flex flex-wrap gap-3"
-        >
-          <button
+        <div className="mt-10 flex flex-wrap gap-3">
+          <motion.button
             type="button"
             onClick={clearFilters}
-            className={cn(
-              "px-4 py-2 rounded-full font-display text-sm font-medium border transition-colors duration-300",
-              selected.length === 0
-                ? "border-primary bg-primary/10 text-primary"
-                : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground",
-            )}
+            whileTap={{ scale: 0.95 }}
+            className={chipClass(selected.length === 0)}
           >
             All
-          </button>
-          {PROJECT_CATEGORIES.map((category) => {
-            const active = selected.includes(category);
-            return (
-              <button
-                key={category}
-                type="button"
-                onClick={() => toggleCategory(category)}
-                className={cn(
-                  "px-4 py-2 rounded-full font-display text-sm font-medium border transition-colors duration-300",
-                  active
-                    ? "border-primary bg-primary/10 text-primary"
-                    : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground",
-                )}
-              >
-                {category}
-              </button>
-            );
-          })}
-        </motion.div>
+          </motion.button>
+          {PROJECT_CATEGORIES.map((category) => (
+            <motion.button
+              key={category}
+              type="button"
+              onClick={() => toggleCategory(category)}
+              whileTap={{ scale: 0.95 }}
+              className={chipClass(selected.includes(category))}
+            >
+              {category}
+            </motion.button>
+          ))}
+        </div>
+
+        <p className="label-mono mt-6 text-muted-foreground/80">
+          {filtered.length} {filtered.length === 1 ? "project" : "projects"}
+        </p>
 
         {filtered.length === 0 ? (
-          <div className="rounded-2xl border border-border bg-card/40 px-8 py-16 text-center">
-            <p className="font-body text-muted-foreground mb-6">No projects match the selected filters.</p>
+          <div className="mt-8 border border-ink/20 bg-card/50 px-8 py-16 text-center">
+            <p className="mb-6 font-body text-muted-foreground">No projects match the selected filters.</p>
             <button
               type="button"
               onClick={clearFilters}
-              className="px-6 py-3 border border-border hover:border-primary/50 font-display text-sm font-medium rounded-sm transition-colors"
+              className="border border-ink/30 px-6 py-3 font-display text-sm font-semibold transition-colors hover:border-primary hover:text-primary"
             >
               Clear filters
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filtered.map((project, i) => (
               <ProjectCard key={project.slug} project={project} index={i} />
             ))}
           </div>
         )}
       </main>
-    </motion.div>
+    </div>
   );
 };
 
