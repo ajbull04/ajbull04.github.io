@@ -65,7 +65,7 @@ const experiences = [
 const ExperienceSection = () => (
   <section id="experience" className="border-y border-ink/15 bg-paper-deep/60 px-6 py-28 lg:px-10">
     <div className="container mx-auto">
-      <SectionHeading index="02" label="Track record" title="Where I've built, taught, and shipped." />
+      <SectionHeading index="03" label="Track record" title="Where I've built, taught, and shipped." />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

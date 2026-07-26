@@ -23,7 +23,7 @@ const toolkit = [
 const AboutSection = () => (
   <section id="about" className="px-6 py-28 lg:px-10">
     <div className="container mx-auto">
-      <SectionHeading index="03" label="Who I am" title="I build because software makes almost anything improvable." />
+      <SectionHeading index="04" label="Who I am" title="I build because software makes almost anything improvable." />
 
       <div className="grid gap-14 lg:grid-cols-12">
         <motion.div

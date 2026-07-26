@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { RESUME_URL } from "@/lib/links";
 
 const proof = [
   { label: "Now", value: "Research Assistant, Duke — biometric firmware, BLE" },
@@ -72,7 +73,7 @@ const HeroSection = () => {
           <motion.div
             variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.6 }}
-            className="mt-10 flex flex-wrap items-center gap-4"
+            className="no-print mt-10 flex flex-wrap items-center gap-4"
           >
             <button
               onClick={() => scrollTo("projects")}
@@ -104,6 +105,15 @@ const HeroSection = () => {
               </div>
             ))}
           </dl>
+          <a
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="label-mono mt-6 inline-flex items-center gap-2 border-b border-ink/30 pb-1 text-foreground transition-colors hover:border-primary hover:text-primary"
+          >
+            Résumé (PDF)
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
         </motion.aside>
       </div>
     </section>

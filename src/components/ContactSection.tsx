@@ -1,22 +1,19 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-
-const EMAIL = "ajbull426@gmail.com";
-const LINKEDIN = "https://www.linkedin.com/in/ajbull426";
-const PHONE_DISPLAY = "856-404-7645";
-const PHONE_TEL = "tel:+18564047645";
+import { EMAIL, LINKEDIN, PHONE_DISPLAY, PHONE_TEL, RESUME_URL } from "@/lib/links";
 
 const channels = [
   { label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
   { label: "LinkedIn", value: "in/ajbull426", href: LINKEDIN },
   { label: "Phone", value: PHONE_DISPLAY, href: PHONE_TEL },
+  { label: "Résumé", value: "resume.pdf", href: RESUME_URL },
 ];
 
 const ContactSection = () => (
   <section id="contact" className="px-6 py-28 lg:px-10">
     <div className="container mx-auto">
-      <SectionHeading index="04" label="Get in touch" title="Got something you want built? Let's talk." />
+      <SectionHeading index="05" label="Get in touch" title="Got something you want built? Let's talk." />
 
       <div className="grid gap-14 lg:grid-cols-12">
         <motion.div
@@ -36,7 +33,7 @@ const ContactSection = () => (
           </p>
           <a
             href={`mailto:${EMAIL}`}
-            className="group inline-flex items-center gap-3 bg-ink px-7 py-4 font-display text-sm font-semibold text-paper transition-colors duration-300 hover:bg-primary"
+            className="no-print group inline-flex items-center gap-3 bg-ink px-7 py-4 font-display text-sm font-semibold text-paper transition-colors duration-300 hover:bg-primary"
           >
             Email me
             <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

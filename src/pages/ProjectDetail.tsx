@@ -1,7 +1,15 @@
+import { Suspense, lazy } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import projects from "@/data/projects";
+
+const QueryLatencyLab = lazy(() => import("@/components/workbench/QueryLatencyLab"));
+
+const SubHeading = ({ children }: { children: string }) => (
+  <h2 className="font-display text-2xl font-bold text-foreground md:text-3xl">{children}</h2>
+);
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -21,10 +29,11 @@ const ProjectDetail = () => {
   }
 
   const hasLinks = Boolean(project.liveUrl || project.repoUrl);
+  const study = project.caseStudy;
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="sticky top-0 z-50 border-b border-ink/15 bg-paper/85 backdrop-blur-md">
+      <div className="no-print sticky top-0 z-50 border-b border-ink/15 bg-paper/85 backdrop-blur-md">
         <div className="container mx-auto flex items-center gap-6 px-6 py-4 lg:px-10">
           <Link
             to="/projects"
@@ -55,26 +64,44 @@ const ProjectDetail = () => {
         </motion.div>
 
         <div className="mt-10 border border-ink/10 bg-paper-deep/70">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="max-h-[62vh] w-full object-contain p-6"
-          />
+          <img src={project.image} alt={project.title} className="max-h-[62vh] w-full object-contain p-6" />
         </div>
 
         <div className="mt-14 grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-7">
+          <div className="space-y-12 lg:col-span-7">
             <p className="font-body text-lg leading-relaxed text-foreground md:text-xl">{project.longDescription}</p>
 
-            <h2 className="mt-14 font-display text-2xl font-bold text-foreground md:text-3xl">Key highlights</h2>
-            <dl className="mt-6 divide-y divide-ink/15 border-t border-ink/25">
-              {project.highlights.map((highlight, i) => (
-                <div key={highlight} className="flex gap-5 py-5">
-                  <dt className="label-mono pt-1 text-primary">{String(i + 1).padStart(2, "0")}</dt>
-                  <dd className="font-body leading-relaxed text-muted-foreground">{highlight}</dd>
-                </div>
-              ))}
-            </dl>
+            {study && (
+              <>
+                <section className="space-y-4">
+                  <SubHeading>Why it exists</SubHeading>
+                  <p className="font-body leading-relaxed text-muted-foreground">{study.context}</p>
+                </section>
+
+                <section>
+                  <SubHeading>Constraints</SubHeading>
+                  <ul className="mt-4 divide-y divide-ink/15 border-t border-ink/25">
+                    {study.constraints.map((constraint) => (
+                      <li key={constraint} className="py-4 font-body leading-relaxed text-muted-foreground">
+                        {constraint}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              </>
+            )}
+
+            <section>
+              <SubHeading>What I built</SubHeading>
+              <dl className="mt-4 divide-y divide-ink/15 border-t border-ink/25">
+                {project.highlights.map((highlight, i) => (
+                  <div key={highlight} className="flex gap-5 py-4">
+                    <dt className="label-mono pt-1 text-primary">{String(i + 1).padStart(2, "0")}</dt>
+                    <dd className="font-body leading-relaxed text-muted-foreground">{highlight}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
           </div>
 
           <aside className="lg:col-span-5">
@@ -86,7 +113,7 @@ const ProjectDetail = () => {
             </dl>
 
             {hasLinks && (
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="no-print mt-8 flex flex-wrap gap-4">
                 {project.liveUrl && (
                   <a
                     href={project.liveUrl}
@@ -113,6 +140,85 @@ const ProjectDetail = () => {
             )}
           </aside>
         </div>
+
+        {study && (
+          <>
+            <section className="mt-20">
+              <SubHeading>How it fits together</SubHeading>
+              <div className="mt-6">
+                <ArchitectureDiagram tiers={study.architecture.tiers} notes={study.architecture.notes} />
+              </div>
+            </section>
+
+            <section className="mt-20">
+              <SubHeading>Decisions and what they cost</SubHeading>
+              <div className="mt-6 border-t border-ink/25">
+                {study.decisions.map((entry) => (
+                  <div
+                    key={entry.decision}
+                    className="grid gap-5 border-b border-ink/15 py-6 md:grid-cols-[1.1fr_1fr_1fr] md:gap-8"
+                  >
+                    <div>
+                      <p className="label-mono text-primary">Decision</p>
+                      <p className="mt-2 font-display text-base font-bold leading-snug text-foreground">
+                        {entry.decision}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="label-mono text-muted-foreground">Why</p>
+                      <p className="mt-2 font-body leading-relaxed text-muted-foreground">{entry.why}</p>
+                    </div>
+                    <div>
+                      <p className="label-mono text-muted-foreground">What it cost</p>
+                      <p className="mt-2 font-body leading-relaxed text-muted-foreground">{entry.tradeoff}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-20">
+              <SubHeading>Results</SubHeading>
+              <dl className="mt-6 grid gap-8 border-t border-ink/25 pt-6 sm:grid-cols-2 lg:grid-cols-4">
+                {study.results.map((result) => (
+                  <div key={result.metric}>
+                    <dt className="label-mono text-muted-foreground">{result.metric}</dt>
+                    <dd className="mt-2 font-display text-xl font-bold leading-snug text-foreground">{result.value}</dd>
+                    {result.note && (
+                      <p className="mt-1 font-mono text-[11px] leading-relaxed text-muted-foreground">{result.note}</p>
+                    )}
+                  </div>
+                ))}
+              </dl>
+            </section>
+
+            {project.slug === "trybl" && (
+              <section className="no-print mt-20">
+                <SubHeading>Try the optimization</SubHeading>
+                <p className="mt-4 max-w-2xl font-body leading-relaxed text-muted-foreground">
+                  Toggle the indexes and watch the planner change its mind. This is the same lab from the home page,
+                  modeled on the query plans behind the latency numbers above.
+                </p>
+                <div className="mt-6">
+                  <Suspense
+                    fallback={
+                      <div className="flex h-96 items-center justify-center border border-ink/15 bg-paper-deep/40">
+                        <p className="label-mono text-muted-foreground">Loading module…</p>
+                      </div>
+                    }
+                  >
+                    <QueryLatencyLab />
+                  </Suspense>
+                </div>
+              </section>
+            )}
+
+            <section className="mt-20 max-w-3xl border-l-2 border-primary pl-6">
+              <p className="label-mono text-primary">What I'd do differently</p>
+              <p className="mt-3 font-body text-lg leading-relaxed text-foreground">{study.nextTime}</p>
+            </section>
+          </>
+        )}
       </main>
     </div>
   );

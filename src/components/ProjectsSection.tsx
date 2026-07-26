@@ -11,13 +11,13 @@ const ProjectsSection = () => {
     <section id="projects" className="px-6 py-28 lg:px-10">
       <div className="container mx-auto">
         <SectionHeading
-          index="01"
+          index="02"
           label="Built"
           title="Things I've designed, shipped, and kept improving."
           action={
             <Link
               to="/projects"
-              className="group inline-flex shrink-0 items-center gap-2 border border-ink/30 px-6 py-3 font-display text-sm font-semibold text-foreground transition-colors duration-300 hover:border-primary hover:text-primary"
+              className="no-print group inline-flex shrink-0 items-center gap-2 border border-ink/30 px-6 py-3 font-display text-sm font-semibold text-foreground transition-colors duration-300 hover:border-primary hover:text-primary"
             >
               View all projects
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
