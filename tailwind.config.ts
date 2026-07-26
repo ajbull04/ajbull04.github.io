@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Space Grotesk', 'sans-serif'],
-        body: ['DM Sans', 'sans-serif'],
+        display: ['Syne', '"Helvetica Neue"', 'sans-serif'],
+        body: ['"Source Serif 4"', 'Georgia', 'serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -55,10 +56,10 @@ export default {
           DEFAULT: "hsl(var(--coral))",
           glow: "hsl(var(--coral-glow))",
         },
-        cream: "hsl(var(--cream))",
-        charcoal: {
-          DEFAULT: "hsl(var(--charcoal))",
-          light: "hsl(var(--charcoal-light))",
+        ink: "hsl(var(--ink))",
+        paper: {
+          DEFAULT: "hsl(var(--paper))",
+          deep: "hsl(var(--paper-deep))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

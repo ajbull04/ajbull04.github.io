@@ -33,7 +33,7 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          GITHUB_PAGES: "true"
+          # GITHUB_PAGES: "true"
 
       - name: Upload build files
         uses: actions/upload-pages-artifact@v3

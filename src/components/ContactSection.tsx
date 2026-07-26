@@ -1,76 +1,70 @@
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Phone } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import SectionHeading from "@/components/SectionHeading";
+import { EMAIL, LINKEDIN, PHONE_DISPLAY, PHONE_TEL, RESUME_URL } from "@/lib/links";
 
-const EMAIL = "ajbull426@gmail.com";
-const LINKEDIN = "https://www.linkedin.com/in/ajbull426";
-const PHONE_DISPLAY = "856-404-7645";
-const PHONE_TEL = "tel:+18564047645";
-
-const socials = [
-  { icon: Mail, label: "Email", href: `mailto:${EMAIL}` },
-  { icon: Linkedin, label: "LinkedIn", href: LINKEDIN },
-  { icon: Phone, label: "Phone", href: PHONE_TEL },
+const channels = [
+  { label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
+  { label: "LinkedIn", value: "in/ajbull426", href: LINKEDIN },
+  { label: "Phone", value: PHONE_DISPLAY, href: PHONE_TEL },
+  { label: "Résumé", value: "resume.pdf", href: RESUME_URL },
 ];
 
 const ContactSection = () => (
-  <section id="contact" className="py-32 px-8 bg-card/30">
-    <div className="container mx-auto text-center max-w-2xl">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-        className="space-y-6"
-      >
-        <p className="font-display text-sm uppercase tracking-[0.3em] text-primary">Get in touch</p>
-        <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground">
-          Let's <span className="text-gradient-coral">talk</span>
-        </h2>
-        <p className="text-muted-foreground font-body text-lg leading-relaxed">
-          I'm looking for software engineering careers where I can work on real products, backend, full-stack, mobile,
-          or systems. If that sounds like your team, I'd love to connect.
-        </p>
-        <p className="text-muted-foreground font-body leading-relaxed">
-          Even if you just want to talk through a problem, explore other opportunities, or reach out about something
-          else, I'd love to hear from you. I'm open to connecting on almost anything, so please get in touch.
-        </p>
+  <section id="contact" className="px-6 py-28 lg:px-10">
+    <div className="container mx-auto">
+      <SectionHeading index="05" label="Get in touch" title="Got something you want built? Let's talk." />
 
-        <motion.a
-          href={`mailto:${EMAIL}`}
+      <div className="grid gap-14 lg:grid-cols-12">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="inline-block bg-gradient-coral px-10 py-4 rounded-full font-display text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="space-y-6 lg:col-span-7"
         >
-          Email me
-        </motion.a>
-
-        <p className="text-sm text-muted-foreground font-body pt-2">
-          <a href={PHONE_TEL} className="hover:text-primary transition-colors">
-            {PHONE_DISPLAY}
+          <p className="font-body text-xl leading-relaxed text-foreground">
+            I'm looking for software engineering roles where I can work on real products — backend, full-stack, mobile,
+            or systems. If that sounds like your team, I'd love to connect.
+          </p>
+          <p className="font-body leading-relaxed text-muted-foreground">
+            Even if you just want to talk through a problem, explore other opportunities, or reach out about something
+            else, I'm interested. Send it over.
+          </p>
+          <a
+            href={`mailto:${EMAIL}`}
+            className="no-print group inline-flex items-center gap-3 bg-ink px-7 py-4 font-display text-sm font-semibold text-paper transition-colors duration-300 hover:bg-primary"
+          >
+            Email me
+            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
-        </p>
+        </motion.div>
 
-        <div className="flex justify-center gap-6 pt-8">
-          {socials.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              aria-label={s.label}
-              className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors duration-300"
-            >
-              <s.icon className="w-5 h-5" />
-            </a>
-          ))}
+        <div className="lg:col-span-5">
+          <dl className="divide-y divide-ink/15 border-t border-ink/25">
+            {channels.map((channel) => (
+              <div key={channel.label} className="flex items-baseline justify-between gap-6 py-4">
+                <dt className="label-mono text-muted-foreground">{channel.label}</dt>
+                <dd>
+                  <a
+                    href={channel.href}
+                    target={channel.href.startsWith("http") ? "_blank" : undefined}
+                    rel={channel.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="font-mono text-sm text-foreground transition-colors hover:text-primary"
+                  >
+                    {channel.value}
+                  </a>
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
-      </motion.div>
-    </div>
+      </div>
 
-    {/* Footer */}
-    <div className="container mx-auto mt-24 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground font-body">
-      <p>© 2026 Aaron Bullock. All rights reserved.</p>
-      <p>Duke University · Software engineering</p>
+      <div className="mt-24 flex flex-col items-start justify-between gap-3 border-t border-ink/20 pt-6 md:flex-row md:items-center">
+        <p className="label-mono text-muted-foreground">© 2026 Aaron Bullock</p>
+        <p className="label-mono text-muted-foreground">Duke University · Software Engineering</p>
+      </div>
     </div>
   </section>
 );

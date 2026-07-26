@@ -1,43 +1,36 @@
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getFeaturedProjects } from "@/data/projects";
-import ProjectCard from "@/components/ProjectCard";
+import FeaturedProject from "@/components/FeaturedProject";
+import SectionHeading from "@/components/SectionHeading";
 
 const ProjectsSection = () => {
   const featured = getFeaturedProjects();
 
   return (
-    <section id="projects" className="py-32 px-8">
-      <motion.div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mb-16 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between"
-        >
-          <motion.div>
-            <p className="font-display text-sm uppercase tracking-[0.3em] text-primary mb-3">Selected Work</p>
-            <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground">
-              Featured Projects<span className="text-gradient-coral">.</span>
-            </h2>
-          </motion.div>
-          <Link
-            to="/projects"
-            className="group inline-flex items-center gap-2 self-start px-6 py-3 border border-border hover:border-primary/50 text-foreground font-display text-sm font-medium rounded-sm transition-colors duration-300"
-          >
-            View all projects
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </motion.div>
+    <section id="projects" className="px-6 py-28 lg:px-10">
+      <div className="container mx-auto">
+        <SectionHeading
+          index="02"
+          label="Built"
+          title="Things I've designed, shipped, and kept improving."
+          action={
+            <Link
+              to="/projects"
+              className="no-print group inline-flex shrink-0 items-center gap-2 border border-ink/30 px-6 py-3 font-display text-sm font-semibold text-foreground transition-colors duration-300 hover:border-primary hover:text-primary"
+            >
+              View all projects
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          }
+        />
 
-        <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
           {featured.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} index={i} compact />
+            <FeaturedProject key={project.slug} project={project} index={i} />
           ))}
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 };
