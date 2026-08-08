@@ -14,6 +14,18 @@ const education = {
 
 const experiences = [
   {
+    role: "Software Engineer Intern",
+    company: "Impulse Space",
+    location: "Los Angeles, CA",
+    period: "May 2026 – Present (Part-time Remote)",
+    bullets: [
+      "Developed a full-stack software system to pull, manage, and visualize vehicle architecture data used by nearly all engineers company-wide",
+      "Architected a platform for building and conceptualizing entire vehicle architectures, evolving to display real-time status of system components and connectivity",
+      "Serve as sole developer, manager, and planner, owning all design decisions and technical direction for the system",
+      "Built with TypeScript, React, Next.js, PostgreSQL, Prisma, Docker, Nginx, and GitLab CI/CD",
+    ],
+  },
+  {
     role: "Research Assistant",
     company: "Duke University",
     location: "Durham, NC",
