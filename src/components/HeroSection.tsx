@@ -58,7 +58,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6 }}
             className="mt-8 max-w-2xl font-display text-2xl font-bold leading-snug text-foreground sm:text-3xl"
           >
-            I build — firmware on the board, services behind it, and the product on top.
+            I build — the product you use, the services powering it, and the firmware running underneath.
           </motion.h2>
 
           <motion.p
