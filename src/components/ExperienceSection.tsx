@@ -14,22 +14,21 @@ const education = {
 
 const experiences = [
   {
-    role: "Software Engineer Intern",
+    role: "Software Engineering Intern",
     company: "Impulse Space",
     location: "Los Angeles, CA",
-    period: "May 2026 – Present (Part-time Remote)",
+    period: "May 2026 – Present",
     bullets: [
-      "Developed a full-stack software system to pull, manage, and visualize vehicle architecture data used by nearly all engineers company-wide",
-      "Architected a platform for building and conceptualizing entire vehicle architectures, evolving to display real-time status of system components and connectivity",
-      "Serve as sole developer, manager, and planner, owning all design decisions and technical direction for the system",
-      "Built with TypeScript, React, Next.js, PostgreSQL, Prisma, Docker, Nginx, and GitLab CI/CD",
+      "Architected and developed a company-wide platform for visualizing, configuring, and managing aerospace vehicle architectures, reducing production engineering workflow time by 86%, from 14 hours to 2 hours.",
+      "Built an interactive graph-based interface with TypeScript, React, and React Flow and designed a PostgreSQL-backed service layer using Prisma.",
+      "Containerized and deployed the application with Docker, Next.js, and Nginx, using GitLab CI/CD and webhooks to automate build and deployment workflows.",
+      "Developed Python integration pipelines that ingest and transform engineering data from CAD systems and internal APIs.",
     ],
   },
   {
     role: "Research Assistant",
     company: "Duke University",
     location: "Durham, NC",
-    period: "Aug 2025 – Present",
     bullets: [
       "Developed firmware to capture and analyze data from muscles for biometric devices using C, nRF SDK, and Zephyr RTOS",
       "Enabled device-to-device data transfer by implementing Bluetooth Low Energy (BLE) communication using C++",
@@ -40,7 +39,18 @@ const experiences = [
     role: "Digital Design Teaching Assistant",
     company: "Duke University",
     location: "Durham, NC",
-    period: "Aug 2025 – Present",
+    period: "Jan 2026 - Present",
+    bullets: [
+      "Taught computer architecture topics—pipelining, caching, memory hierarchy, ISA execution—to 500+ students",
+      "Debugged student programs in C and Assembly on CPU and memory models",
+      "Mentored 5-stage pipelined CPU design projects on FPGAs",
+    ],
+  },
+  {
+    role: "Computer Architecture Teaching Assistant",
+    company: "Duke University",
+    location: "Durham, NC",
+    period: "Aug 2025 - Jan 2026",
     bullets: [
       "Taught computer architecture concepts including pipelining, caching, memory hierarchy, and ISA execution to 500+ students",
       "Helped students debug programs written in C and Assembly interacting with CPU architectures and memory systems",
@@ -48,16 +58,15 @@ const experiences = [
     ],
   },
   {
-    role: "Software Engineer Intern",
     company: "Persistent Systems, LLC",
-    location: "New York City, NY",
+    location: "New York, NY",
     period: "May 2025 – Aug 2025",
     bullets: [
-      "Removed a production bottleneck by building a Quality Control app using Java and C firmware to automate device validation",
-      "Enhanced production output by achieving 6-minute device validation via Gradle application automation and optimization",
-      "Improved failure analysis by extending the company SQL database to capture device telemetry and production error codes",
-      "Enhanced the company-wide QC app by assembling unit tests and updating the frontend to display real-time device status",
-      "Improved development efficiency 50% by creating automated build and deployment bash scripts for the QC system",
+      "Developed a Gradle-packaged Java Quality Control application that integrated C device firmware with Amazon RDS for SQL Server through JDBC, removing a production bottleneck and enabling military-device shipments.",
+      "Standardized error-code reporting across all device QC applications and extended Amazon RDS for SQL Server to store validation metrics from the new device.",
+      "Implemented asynchronous device validation with Java SwingWorker, preventing UI freezes and displaying real-time status.",
+      "Reduced validation time for a new device QC application by 50%, from 12 to 6 minutes, through workflow optimization.",
+      "Expanded unit-test coverage and standardized application builds with Bash scripts, reducing build time by 50% while preventing database configuration errors.",
     ],
   },
   {
@@ -66,10 +75,9 @@ const experiences = [
     location: "Atlantic City, NJ",
     period: "May 2024 – Aug 2024",
     bullets: [
-      "Reduced test duration by 66% for a national tool by leading the creation of simulations using a proprietary FAA framework",
-      "Enhanced data processing by 500% by introducing multithreading and parallel processing using the C POSIX library",
-      "Prototyped an initial Artificial Intelligence model for automating testing and evaluation within the FAA",
-      "Reduced time spent outside of lab by 50% by deploying Python automation scripts for testing workflows",
+      "Led development of simulations for an FAA evaluation platform, reducing test execution time by 66%.",
+      "Increased data-processing throughput to 5x its previous rate by implementing multithreading and parallel execution using C++ and POSIX threads.",
+      "Developed and deployed Python automation scripts integrating FAA APIs, reducing required in-lab testing time by 50%.",
     ],
   },
 ];

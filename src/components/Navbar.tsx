@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { EMAIL, RESUME_URL } from "@/lib/links";
 
 const navItems = [
-  { label: "Live", id: "workbench" },
+  // { label: "Live", id: "workbench" },
   { label: "Work", id: "projects" },
   { label: "Experience", id: "experience" },
   { label: "About", id: "about" },
