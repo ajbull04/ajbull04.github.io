@@ -58,6 +58,7 @@ const experiences = [
     ],
   },
   {
+    role: "Embedded Software Engineer Intern",
     company: "Persistent Systems, LLC",
     location: "New York, NY",
     period: "May 2025 – Aug 2025",
