@@ -4,7 +4,7 @@ import SectionHeading from "@/components/SectionHeading";
 const education = {
   school: "Duke University",
   subtitle: "Durham, NC · May 2027",
-  headline: "MEng Software Engineering · BSE Electrical & Computer Engineering, Computer Science",
+  headline: "MEng Electrical & Computer Engineering (Software Engineering) · BSE Electrical & Computer Engineering, Computer Science",
   bullets: [
     "Cumulative GPA: 3.7/4.0",
     "Coursework includes algorithms, database systems, computer architecture, networks, operating systems, distributed systems, and software engineering",
@@ -29,6 +29,7 @@ const experiences = [
     role: "Research Assistant",
     company: "Duke University",
     location: "Durham, NC",
+    period: "Aug 2025 – May 2026",
     bullets: [
       "Developed firmware to capture and analyze data from muscles for biometric devices using C, nRF SDK, and Zephyr RTOS",
       "Enabled device-to-device data transfer by implementing Bluetooth Low Energy (BLE) communication using C++",
