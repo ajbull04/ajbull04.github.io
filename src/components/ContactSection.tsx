@@ -24,7 +24,7 @@ const ContactSection = () => (
           className="space-y-6 lg:col-span-7"
         >
           <p className="font-body text-xl leading-relaxed text-foreground">
-            I'm looking for software engineering roles where I can work on real products — backend, full-stack, mobile,
+            I'm looking for software engineering roles where I can work on real products, backend, full-stack, mobile,
             or systems. If that sounds like your team, I'd love to connect.
           </p>
           <p className="font-body leading-relaxed text-muted-foreground">

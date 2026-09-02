@@ -41,9 +41,10 @@ const experiences = [
     location: "Durham, NC",
     period: "Jan 2026 - Present",
     bullets: [
-      "Taught computer architecture topics—pipelining, caching, memory hierarchy, ISA execution—to 500+ students",
-      "Debugged student programs in C and Assembly on CPU and memory models",
-      "Mentored 5-stage pipelined CPU design projects on FPGAs",
+      "Taught core CPU topics—pipelining, caching, memory hierarchy, and ISA execution—to 500+ students",
+      "Held weekly office hours providing one-on-one support to students troubleshooting design and implementation challenges",
+      "Guided students through designing and building a 5-stage pipelined 100 MHz CPU on FPGAs with advanced features",
+      "Mentored semester-long design projects using the processors students created, ensuring proper functionality and optimization",
     ],
   },
   {
@@ -54,7 +55,7 @@ const experiences = [
     bullets: [
       "Taught computer architecture concepts including pipelining, caching, memory hierarchy, and ISA execution to 500+ students",
       "Helped students debug programs written in C and Assembly interacting with CPU architectures and memory systems",
-      "Mentored students through designing and debugging a 5-stage pipelined CPU on FPGAs for course design projects",
+      "Mentored students through designing and debugging a CPU in simulation",
     ],
   },
   {

@@ -23,7 +23,7 @@ const toolkit = [
 const AboutSection = () => (
   <section id="about" className="px-6 py-28 lg:px-10">
     <div className="container mx-auto">
-      <SectionHeading index="04" label="Who I am" title="I build because software makes almost anything improvable." />
+      <SectionHeading index="04" label="Who I am" title="I build because software makes almost anything possible." />
 
       <div className="grid gap-14 lg:grid-cols-12">
         <motion.div
@@ -36,7 +36,7 @@ const AboutSection = () => (
           <p className="font-body text-xl leading-relaxed text-foreground">
             The reason I write software is simple: it is the fastest way I know to take an idea and turn it into
             something real, then keep making it better. A sensor that needs firmware, a backend that buckles under
-            load, a workflow someone still does by hand — all of it is buildable.
+            load, a workflow someone still does by hand, all of it is buildable.
           </p>
           <p className="font-body leading-relaxed text-muted-foreground">
             I'm Aaron Bullock, a Duke student pursuing an MEng in Electrical and Computer Engineering with a
