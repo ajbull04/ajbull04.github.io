@@ -3,10 +3,10 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { RESUME_URL } from "@/lib/links";
 
 const proof = [
-  { label: "Now", value: "Research Assistant, Duke — biometric firmware, BLE" },
-  { label: "Studying", value: "MEng ECE + Software Engineering, Duke '27" },
+  { label: "Now", value: "Project Lead, Impulse Space — aerospace data platform" },
+  { label: "Studying", value: "MEng Electrical & Computer Engineering, Duke '27" },
   { label: "I build in", value: "Embedded · Backend · Distributed · Mobile · Web" },
-  { label: "Shipped at", value: "Persistent Systems · FAA · Trybl" },
+  { label: "Shipped at", value: "Impulse Space · Persistent Systems · FAA" },
 ];
 
 const HeroSection = () => {
