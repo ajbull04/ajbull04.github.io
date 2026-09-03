@@ -36,6 +36,16 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => (
           <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
         </h3>
         <p className="flex-1 font-body leading-relaxed text-muted-foreground">{project.description}</p>
+        <div className="flex flex-wrap gap-2" aria-label="Tools used">
+          {project.stack.slice(0, 5).map((tool) => (
+            <span key={tool} className="border border-ink/20 px-2 py-1 font-mono text-[10px] text-muted-foreground">
+              {tool}
+            </span>
+          ))}
+          {project.stack.length > 5 && (
+            <span className="px-1 py-1 font-mono text-[10px] text-muted-foreground">+{project.stack.length - 5}</span>
+          )}
+        </div>
         <p className="label-mono text-muted-foreground/80">{project.timeline}</p>
       </div>
     </Link>

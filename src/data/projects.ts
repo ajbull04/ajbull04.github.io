@@ -32,6 +32,10 @@ export interface Project {
   role: string;
   timeline: string;
   highlights: string[];
+  /** Optional supporting screenshots shown after the project overview. */
+  images?: { src: string; alt: string; caption?: string }[];
+  /** Optional flexible sections for project-specific information. */
+  details?: { title: string; content: string }[];
   caseStudy?: CaseStudy;
   liveUrl?: string;
   repoUrl?: string;
