@@ -45,9 +45,21 @@ const FeaturedProject = ({ project, index }: FeaturedProjectProps) => {
             {project.title}
           </h3>
           <p className="mt-4 font-body text-lg leading-relaxed text-muted-foreground">{project.description}</p>
+          <div className="mt-5 flex flex-wrap gap-2" aria-label="Tools used">
+            {project.stack.slice(0, 6).map((tool) => (
+              <span key={tool} className="border border-ink/20 px-2.5 py-1 font-mono text-[11px] text-muted-foreground">
+                {tool}
+              </span>
+            ))}
+          </div>
+          {project.highlights[0] && (
+            <p className="mt-5 border-l-2 border-primary pl-4 font-body text-sm leading-relaxed text-foreground">
+              {project.highlights[0]}
+            </p>
+          )}
           <span className="mt-6 inline-flex items-center gap-2 font-display text-sm font-semibold text-foreground">
             <span className="relative">
-              Read the build
+              View project
               <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover:scale-x-100" />
             </span>
             <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
