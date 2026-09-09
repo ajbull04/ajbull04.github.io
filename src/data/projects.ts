@@ -1,4 +1,6 @@
 import project3 from "@/assets/project-3.jpg";
+import project1 from "@/assets/project-1.jpg";
+import project2 from "@/assets/project-2.jpg";
 import TryblImage from "@/assets/Trybl.png";
 import PublisherAccountingSystemImage from "@/assets/Hypothetical.png";
 
@@ -39,6 +41,7 @@ export interface Project {
   caseStudy?: CaseStudy;
   liveUrl?: string;
   repoUrl?: string;
+  status?: "In progress";
 }
 
 const projects: Project[] = [
@@ -317,6 +320,126 @@ const projects: Project[] = [
       },
     },
   },
+      },
+    },
+  },
+  {
+    slug: "robotic-golf-arm",
+    title: "Robotic Golf Arm",
+    description:
+      "A robotic arm designed to putt a golf ball from anywhere on a given field into the hole.",
+    longDescription:
+      "A robotics project that combines sensing, positioning, and motion control to line up and execute a successful putt from different locations on a field.",
+    categories: ["Embedded Systems"],
+    stack: ["Robotics", "Motion Control", "Sensors"],
+    image: project1,
+    role: "Designer & developer",
+    timeline: "Completed",
+    highlights: [
+      "Designed a robotic arm around the mechanics of a repeatable golf putt",
+      "Supported putts from different starting positions across a defined field",
+      "Combined physical actuation with sensing and control logic",
+    ],
+  },
+  {
+    slug: "dukehub-lite",
+    title: "DukeHub Lite",
+    description:
+      "A mobile app that helps Duke students view their classes using Duke's APIs.",
+    longDescription:
+      "DukeHub Lite is a streamlined mobile experience for students to access class information through Duke's APIs.",
+    categories: ["Mobile"],
+    stack: ["Mobile Development", "REST APIs", "Duke APIs"],
+    image: project2,
+    role: "Mobile developer",
+    timeline: "Completed",
+    highlights: [
+      "Integrated Duke APIs to retrieve student class information",
+      "Designed a mobile-first class viewing experience",
+      "Simplified access to commonly needed course details",
+    ],
+  },
+  {
+    slug: "pup-soap-dispenser",
+    title: "P.U.P. (Piling Up Powder)",
+    description:
+      "An embedded system designed to automate the dispensing of powdered soap for lab testing.",
+    longDescription:
+      "P.U.P. is an embedded automation system built to dispense powdered soap consistently for a laboratory testing workflow.",
+    categories: ["Embedded Systems"],
+    stack: ["Embedded Systems", "Automation", "Sensors"],
+    image: project3,
+    role: "Embedded systems developer",
+    timeline: "Completed",
+    highlights: [
+      "Automated a repetitive material-dispensing workflow",
+      "Designed for consistent operation in a lab-testing environment",
+      "Integrated embedded control with a physical dispensing mechanism",
+    ],
+  },
+  {
+    slug: "distributed-systems-project",
+    title: "Distributed Systems Project",
+    description:
+      "An in-progress project exploring the design and implementation of distributed systems.",
+    longDescription:
+      "An active distributed systems project. Architecture, implementation details, and results will be added as the project develops.",
+    categories: ["Full Stack"],
+    stack: ["Distributed Systems"],
+    image: project1,
+    role: "Developer",
+    timeline: "In progress",
+    status: "In progress",
+    highlights: ["Project currently in development", "More technical details coming soon"],
+  },
+  {
+    slug: "full-stack-iot-project",
+    title: "Full-Stack IoT Project",
+    description:
+      "An in-progress IoT project connecting physical devices to a full-stack software experience.",
+    longDescription:
+      "An active full-stack IoT project spanning connected hardware and application software. More details will be added as the system develops.",
+    categories: ["Full Stack", "Embedded Systems"],
+    stack: ["IoT", "Full-Stack Development", "Embedded Systems"],
+    image: project2,
+    role: "Full-stack & embedded developer",
+    timeline: "In progress",
+    status: "In progress",
+    highlights: ["Project currently in development", "Connects an embedded device with a full-stack application"],
+  },
+  {
+    slug: "java-computer-game",
+    title: "Java Strategy Game",
+    description:
+      "A Java game that lets players compete against computer-controlled opponents.",
+    longDescription:
+      "A Java-based game featuring interactive gameplay against computer-controlled opponents.",
+    categories: ["Full Stack"],
+    stack: ["Java", "Game Development", "Computer Opponents"],
+    image: project3,
+    role: "Game developer",
+    timeline: "Completed",
+    highlights: [
+      "Built the game and its core rules in Java",
+      "Implemented computer-controlled opponents",
+      "Created an interactive player-versus-computer experience",
+    ],
+  },
+  {
+    slug: "dinosaur-robot",
+    title: "Dinosaur Robot",
+    description:
+      "An interactive robot using Hall-effect and light sensors with Bluetooth communication to perform tasks in a game.",
+    longDescription:
+      "A dinosaur-themed robot that combines physical sensing and wireless communication to respond to its environment and complete game tasks.",
+    categories: ["Embedded Systems"],
+    stack: ["Hall-effect Sensor", "Bluetooth", "Light Sensor", "Robotics"],
+    image: project1,
+    role: "Embedded systems developer",
+    timeline: "Completed",
+    highlights: [
+      "Used a Hall-effect sensor to detect magnetic interactions",
+      "Added Bluetooth communication for wireless game behavior",
 ];
 
 export const getFeaturedProjects = (): Project[] => projects.filter((p) => p.featured);
