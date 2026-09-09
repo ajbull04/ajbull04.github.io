@@ -3,7 +3,7 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { RESUME_URL } from "@/lib/links";
 
 const proof = [
-  { label: "Now", value: "Project Lead, Impulse Space — aerospace data platform" },
+  { label: "Now", value: "Leading Impulse Space — aerospace data platform" },
   { label: "Studying", value: "MEng Electrical & Computer Engineering, Duke '27" },
   { label: "I build in", value: "Embedded · Backend · Distributed · Mobile · Web" },
   { label: "Shipped at", value: "Impulse Space · Persistent Systems · FAA" },
