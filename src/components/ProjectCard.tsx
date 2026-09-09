@@ -30,7 +30,14 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => (
         />
       </div>
       <div className="flex flex-1 flex-col gap-3 p-6">
-        <p className="label-mono text-primary">{project.categories.join(" · ")}</p>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="label-mono text-primary">{project.categories.join(" · ")}</p>
+          {project.status && (
+            <span className="label-mono border border-primary/40 bg-primary/10 px-2 py-1 text-primary">
+              {project.status}
+            </span>
+          )}
+        </div>
         <h3 className="flex items-start justify-between gap-3 font-display text-xl font-bold text-foreground">
           {project.title}
           <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
