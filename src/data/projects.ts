@@ -324,36 +324,62 @@ const projects: Project[] = [
     slug: "robotic-golf-arm",
     title: "Robotic Golf Arm",
     description:
-      "A robotic arm designed to putt a golf ball from anywhere on a given field into the hole.",
+      "A ROS 2 robotic putting system that uses computer vision and motion planning to sink shots from varied ball positions.",
     longDescription:
-      "A robotics project that combines sensing, positioning, and motion control to line up and execute a successful putt from different locations on a field.",
+      "A simulated autonomous putting system for a Kinova Gen3 Lite 6-DOF arm. An OpenCV perception node locates the ball, projects its image coordinates into the world, and sends the ball-to-hole geometry to a MoveIt 2 trajectory planner that aligns the putter and executes a speed-scaled Cartesian stroke in Gazebo.",
     categories: ["Embedded Systems"],
-    stack: ["Robotics", "Motion Control", "Sensors"],
+    stack: ["ROS 2", "Python", "OpenCV", "MoveIt 2", "Gazebo", "Docker"],
     image: project1,
     role: "Designer & developer",
     timeline: "Completed",
     highlights: [
-      "Designed a robotic arm around the mechanics of a repeatable golf putt",
-      "Supported putts from different starting positions across a defined field",
-      "Combined physical actuation with sensing and control logic",
+      "Built an HSV-based vision pipeline that detects the ball and converts camera pixels into world coordinates",
+      "Planned joint and Cartesian motion for a Kinova Gen3 Lite arm, including gripper control and collision objects",
+      "Aligned the putter with the ball-to-hole vector and generated velocity-scaled Cartesian putting strokes",
+      "Modeled impact and rolling friction to estimate required ball speed, club speed, angular velocity, and torque",
+    ],
+    details: [
+      {
+        title: "Perception to motion",
+        content:
+          "The camera node filters frames in HSV space, rejects small contours, finds the ball centroid, and publishes the resulting world position and shot vector to the planner. The motion node uses that geometry to orient the putter, approach the ball, and execute the stroke.",
+      },
+      {
+        title: "Simulation environment",
+        content:
+          "A ROS 2 launch system assembles the arm, gripper, camera, golf green, ball, and custom putter models across Gazebo and RViz, with ros_gz_bridge carrying camera data into the perception pipeline.",
+      },
     ],
   },
   {
     slug: "dukehub-lite",
     title: "DukeHub Lite",
     description:
-      "A mobile app that helps Duke students view their classes using Duke's APIs.",
+      "A cross-platform course discovery and schedule-planning app for Duke students, powered by Duke APIs and NetID sign-in.",
     longDescription:
-      "DukeHub Lite is a streamlined mobile experience for students to access class information through Duke's APIs.",
+      "DukeHub Lite is an Expo and React Native mobile app for browsing Duke courses, inspecting sections, saving favorites, and building conflict-free schedules. It integrates Duke Streamer curriculum data and uses a small Express service for the Duke OAuth authorization-code exchange and app sessions.",
     categories: ["Mobile"],
-    stack: ["Mobile Development", "REST APIs", "Duke APIs"],
+    stack: ["React Native", "Expo", "TypeScript", "Node.js", "Express", "OAuth/OIDC", "React Native Maps"],
     image: project2,
     role: "Mobile developer",
     timeline: "Completed",
     highlights: [
-      "Integrated Duke APIs to retrieve student class information",
-      "Designed a mobile-first class viewing experience",
-      "Simplified access to commonly needed course details",
+      "Integrated Duke Streamer curriculum APIs for course browsing, subject filters, term data, and section details",
+      "Built a deterministic schedule generator that pairs linked lecture and lab sections and diagnoses meeting conflicts",
+      "Kept OAuth client credentials server-side while storing mobile sessions in Expo SecureStore",
+      "Added recurring native-calendar export and classroom maps with Duke building lookup and navigation deep links",
+    ],
+    details: [
+      {
+        title: "Schedule planning",
+        content:
+          "Students can save planned courses, generate conflict-free section combinations, preview alternatives, and apply a selected schedule. The planner respects association numbers between course components and records overlap diagnostics when combinations fail.",
+      },
+      {
+        title: "Mobile persistence and maps",
+        content:
+          "Favorites, planned courses, and selected sections persist through AsyncStorage. Classroom views combine campus building hints, device location and reverse geocoding with standard or satellite maps and native Apple or Google Maps links.",
+      },
     ],
   },
   {
@@ -406,37 +432,64 @@ const projects: Project[] = [
   },
   {
     slug: "java-computer-game",
-    title: "Java Strategy Game",
+    title: "NC By Train",
     description:
-      "A Java game that lets players compete against computer-controlled opponents.",
+      "A Java train-route strategy game where players compete against deterministic computer opponents.",
     longDescription:
-      "A Java-based game featuring interactive gameplay against computer-controlled opponents.",
+      "NC By Train is a route-building board game centered on collecting cards, claiming rail connections, completing hidden destinations, and competing for the longest path. Its design separates shared game models from player, referee, strategy, tournament, and observer components.",
     categories: ["Full Stack"],
-    stack: ["Java", "Game Development", "Computer Opponents"],
+    stack: ["Java", "Strategy Pattern", "JSON", "Game Development", "Computer Opponents"],
     image: project3,
     role: "Game developer",
     timeline: "Completed",
     highlights: [
-      "Built the game and its core rules in Java",
-      "Implemented computer-controlled opponents",
-      "Created an interactive player-versus-computer experience",
+      "Modeled a train-route game with cards, rails, destinations, route acquisition, endgame rules, and scoring",
+      "Designed deterministic Hold-10 and Buy-Now computer strategies with stable tie-breaking behavior",
+      "Separated player and referee protocols from game models and pluggable strategy implementations",
+      "Specified JSON integration harnesses, dynamic strategy loading, and referee isolation for invalid or timed-out players",
+    ],
+    details: [
+      {
+        title: "Computer strategies",
+        content:
+          "Hold-10 collects cards until it has ten before attempting a connection, while Buy-Now purchases an available route as soon as it can. Deterministic destination and connection ordering makes both strategies repeatable and testable.",
+      },
+      {
+        title: "Rules and scoring",
+        content:
+          "Players draw colored cards or acquire matching routes, score claimed segments and completed destinations, lose points for missed destinations, and compete for a longest-path bonus at the end of the game.",
+      },
     ],
   },
   {
     slug: "dinosaur-robot",
     title: "Dinosaur Robot",
     description:
-      "An interactive robot using Hall-effect and light sensors with Bluetooth communication to perform tasks in a game.",
+      "An autonomous dinosaur robot that follows a marked course, finds a hidden magnet, and exchanges game scores over XBee.",
     longDescription:
-      "A dinosaur-themed robot that combines physical sensing and wireless communication to respond to its environment and complete game tasks.",
+      "An Arduino-based dinosaur robot built for an interactive team game. Three QTI reflectance sensors guide it along a marked course, an analog Hall-effect sensor identifies a hidden magnetic target, and XBee wireless serial links the teams before the robot announces the result with light, motion, sound, and an onboard display.",
     categories: ["Embedded Systems"],
-    stack: ["Hall-effect Sensor", "Bluetooth", "Light Sensor", "Robotics"],
+    stack: ["Arduino", "C++", "QTI Sensors", "Hall-effect Sensor", "XBee", "Servo Control"],
     image: project1,
     role: "Embedded systems developer",
     timeline: "Completed",
     highlights: [
-      "Used a Hall-effect sensor to detect magnetic interactions",
-      "Added Bluetooth communication for wireless game behavior",
+      "Converted three QTI reflectance readings into a compact sensor state for left, right, and straight line-following control",
+      "Counted course markers and calculated magnetic flux to detect and report the hidden magnet's location",
+      "Received four team scores over XBee serial, evaluated winners and ties, and broadcast the result",
+      "Coordinated continuous-rotation servos, RGB feedback, a serial display, and a 30-note animated roar sequence",
+    ],
+    details: [
+      {
+        title: "Autonomous control",
+        content:
+          "The controller digitizes the three reflectance sensors into a three-bit state and maps each pattern to a steering response. Course hash marks provide progress checkpoints while the Hall-effect threshold captures the target location.",
+      },
+      {
+        title: "Game feedback",
+        content:
+          "RGB colors communicate sensing and wireless states, the display reports location and scores, and the final routine combines turning, flashing, and a sequenced sound effect to give the robot a playful dinosaur personality.",
+      },
     ],
   },
 ];
