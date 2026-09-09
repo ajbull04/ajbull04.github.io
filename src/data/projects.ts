@@ -320,9 +320,6 @@ const projects: Project[] = [
       },
     },
   },
-      },
-    },
-  },
   {
     slug: "robotic-golf-arm",
     title: "Robotic Golf Arm",
@@ -440,6 +437,8 @@ const projects: Project[] = [
     highlights: [
       "Used a Hall-effect sensor to detect magnetic interactions",
       "Added Bluetooth communication for wireless game behavior",
+    ],
+  },
 ];
 
 export const getFeaturedProjects = (): Project[] => projects.filter((p) => p.featured);
