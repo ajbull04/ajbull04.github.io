@@ -20,10 +20,10 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => (
       to={`/project/${project.slug}`}
       className="group flex h-full flex-col border border-ink/20 bg-card/60 transition-colors duration-300 hover:border-primary"
     >
-      <div className="overflow-hidden">
+      <div className="aspect-[16/9] overflow-hidden bg-paper-deep">
         <ProjectCover
           project={project}
-          className="h-52 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+          className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-[1.05]"
         />
       </div>
       <div className="flex flex-1 flex-col gap-3 p-6">
