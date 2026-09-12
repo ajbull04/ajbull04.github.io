@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { Project } from "@/data/projects";
+import ProjectCover from "@/components/ProjectCover";
 
 interface ProjectCardProps {
   project: Project;
@@ -20,12 +21,8 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => (
       className="group flex h-full flex-col border border-ink/20 bg-card/60 transition-colors duration-300 hover:border-primary"
     >
       <div className="overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.title}
-          loading="lazy"
-          width={800}
-          height={600}
+        <ProjectCover
+          project={project}
           className="h-52 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
         />
       </div>
