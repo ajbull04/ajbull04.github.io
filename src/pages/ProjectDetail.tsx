@@ -41,8 +41,8 @@ const ProjectDetail = () => {
           <p className="label-mono mt-5 text-muted-foreground">{project.role} · {project.timeline}</p>
         </motion.header>
 
-        <div className="mt-10 border border-ink/10 bg-paper-deep/70">
-          <ProjectCover project={project} videoControls className="max-h-[62vh] w-full object-contain p-6" />
+        <div className="mt-10 overflow-hidden border border-ink/10 bg-ink/95">
+          <ProjectCover project={project} videoControls className="mx-auto max-h-[70vh] w-full" />
         </div>
 
         <div className="mt-14 grid gap-14 lg:grid-cols-12">

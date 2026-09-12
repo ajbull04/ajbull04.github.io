@@ -5,6 +5,9 @@ import TryblImage from "@/assets/Trybl.png";
 import PublisherAccountingSystemImage from "@/assets/Hypothetical.png";
 import dukeHubLiteCover from "@/assets/project-media/dukehub-lite-cover.png";
 import dinosaurRobotCover from "@/assets/project-media/dinosaur-robot-cover.jpg";
+import smartBasketballCover from "@/assets/project-media/smart-basketball-cover.jpg";
+import roboticGolfArmCover from "@/assets/project-media/robotic-golf-arm-cover.jpg";
+import pupCover from "@/assets/project-media/pup-cover.png";
 import smartBasketballVideo from "@/assets/project-media/smart-basketball.mp4";
 import roboticGolfArmVideo from "@/assets/project-media/robotic-golf-arm.mp4";
 import pupDemoOne from "@/assets/project-media/pup-demo-1.mp4";
@@ -37,6 +40,8 @@ export interface Project {
   categories: ProjectCategory[];
   stack: string[];
   image: string;
+  /** Controls whether cards crop the image or letterbox it. */
+  imageFit?: "cover" | "contain";
   /** Optional video used in place of the static cover. */
   coverVideo?: string;
   featured?: boolean;
@@ -253,7 +258,7 @@ const projects: Project[] = [
       "A hardware–software capstone that combines digital design and computer architecture. The system includes a custom 16-bit, 100MHz pipelined RISC CPU with memory-mapped I/O, a Verilog FSM and I²C driver for a rim-mounted RGB sensor, VGA display timing, and game logic written in MIPS assembly running on the custom ISA.",
     categories: ["Embedded Systems"],
     stack: ["Verilog", "FPGA", "Assembly", "I²C", "VGA", "Computer architecture"],
-    image: project3,
+    image: smartBasketballCover,
     coverVideo: smartBasketballVideo,
     featured: true,
     role: "Designer & implementer",
@@ -341,7 +346,7 @@ const projects: Project[] = [
       "A simulated autonomous putting system for a Kinova Gen3 Lite 6-DOF arm. An OpenCV perception node locates the ball, projects its image coordinates into the world, and sends the ball-to-hole geometry to a MoveIt 2 trajectory planner that aligns the putter and executes a speed-scaled Cartesian stroke in Gazebo.",
     categories: ["Embedded Systems"],
     stack: ["ROS 2", "Python", "OpenCV", "MoveIt 2", "Gazebo", "Docker"],
-    image: project1,
+    image: roboticGolfArmCover,
     coverVideo: roboticGolfArmVideo,
     role: "Designer & developer",
     timeline: "Completed",
@@ -374,6 +379,7 @@ const projects: Project[] = [
     categories: ["Mobile"],
     stack: ["React Native", "Expo", "TypeScript", "Node.js", "Express", "OAuth/OIDC", "React Native Maps"],
     image: dukeHubLiteCover,
+    imageFit: "contain",
     role: "Mobile developer",
     timeline: "Completed",
     highlights: [
@@ -404,7 +410,7 @@ const projects: Project[] = [
       "P.U.P. is an embedded automation system built to dispense powdered soap consistently for a laboratory testing workflow.",
     categories: ["Embedded Systems"],
     stack: ["Embedded Systems", "Automation", "Sensors"],
-    image: project3,
+    image: pupCover,
     coverVideo: pupDemoOne,
     videos: [
       { src: pupDemoTwo, caption: "A second view of the P.U.P. dispensing mechanism in action." },

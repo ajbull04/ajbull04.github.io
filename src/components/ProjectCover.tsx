@@ -8,13 +8,13 @@ interface ProjectCoverProps {
 }
 
 const ProjectCover = ({ project, className, loading = "lazy", videoControls = false }: ProjectCoverProps) => {
-  if (project.coverVideo) {
+  const fitClass = videoControls || project.imageFit === "contain" ? "object-contain" : "object-cover";
+
+  if (project.coverVideo && videoControls) {
     return (
       <video
-        className={className}
+        className={`${className} ${fitClass}`}
         controls={videoControls}
-        autoPlay={!videoControls}
-        loop={!videoControls}
         muted
         playsInline
         preload="metadata"
@@ -26,7 +26,7 @@ const ProjectCover = ({ project, className, loading = "lazy", videoControls = fa
     );
   }
 
-  return <img src={project.image} alt={project.title} loading={loading} className={className} />;
+  return <img src={project.image} alt={project.title} loading={loading} className={`${className} ${fitClass}`} />;
 };
 
 export default ProjectCover;

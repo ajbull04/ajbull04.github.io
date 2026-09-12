@@ -29,7 +29,7 @@ const FeaturedProject = ({ project, index }: FeaturedProjectProps) => {
         >
           <ProjectCover
             project={project}
-            className="aspect-[16/10] w-full object-contain p-5 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            className="aspect-[16/10] w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
         </div>
 
