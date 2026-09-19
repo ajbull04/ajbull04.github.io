@@ -3,6 +3,16 @@ import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import TryblImage from "@/assets/Trybl.png";
 import PublisherAccountingSystemImage from "@/assets/Hypothetical.png";
+import dukeHubLiteCover from "@/assets/project-media/dukehub-lite-cover.png";
+import dinosaurRobotCover from "@/assets/project-media/dinosaur-robot-cover.jpg";
+import smartBasketballCover from "@/assets/project-media/smart-basketball-cover.jpg";
+import roboticGolfArmCover from "@/assets/project-media/robotic-golf-arm-cover.jpg";
+import pupCover from "@/assets/project-media/pup-cover.png";
+import smartBasketballVideo from "@/assets/project-media/smart-basketball.mp4";
+import roboticGolfArmVideo from "@/assets/project-media/robotic-golf-arm.mp4";
+import pupDemoOne from "@/assets/project-media/pup-demo-1.mp4";
+import pupDemoTwo from "@/assets/project-media/pup-demo-2.mp4";
+import dinosaurRobotVideo from "@/assets/project-media/dinosaur-robot.mp4";
 
 export const PROJECT_CATEGORIES = ["Full Stack", "Embedded Systems", "Mobile"] as const;
 
@@ -30,12 +40,18 @@ export interface Project {
   categories: ProjectCategory[];
   stack: string[];
   image: string;
+  /** Controls whether cards crop the image or letterbox it. */
+  imageFit?: "cover" | "contain";
+  /** Optional video used in place of the static cover. */
+  coverVideo?: string;
   featured?: boolean;
   role: string;
   timeline: string;
   highlights: string[];
   /** Optional supporting screenshots shown after the project overview. */
   images?: { src: string; alt: string; caption?: string }[];
+  /** Optional supporting demonstrations shown on the project page. */
+  videos?: { src: string; caption?: string }[];
   /** Optional flexible sections for project-specific information. */
   details?: { title: string; content: string }[];
   caseStudy?: CaseStudy;
@@ -242,7 +258,8 @@ const projects: Project[] = [
       "A hardware–software capstone that combines digital design and computer architecture. The system includes a custom 16-bit, 100MHz pipelined RISC CPU with memory-mapped I/O, a Verilog FSM and I²C driver for a rim-mounted RGB sensor, VGA display timing, and game logic written in MIPS assembly running on the custom ISA.",
     categories: ["Embedded Systems"],
     stack: ["Verilog", "FPGA", "Assembly", "I²C", "VGA", "Computer architecture"],
-    image: project3,
+    image: smartBasketballCover,
+    coverVideo: smartBasketballVideo,
     featured: true,
     role: "Designer & implementer",
     timeline: "2025",
@@ -329,7 +346,8 @@ const projects: Project[] = [
       "A simulated autonomous putting system for a Kinova Gen3 Lite 6-DOF arm. An OpenCV perception node locates the ball, projects its image coordinates into the world, and sends the ball-to-hole geometry to a MoveIt 2 trajectory planner that aligns the putter and executes a speed-scaled Cartesian stroke in Gazebo.",
     categories: ["Embedded Systems"],
     stack: ["ROS 2", "Python", "OpenCV", "MoveIt 2", "Gazebo", "Docker"],
-    image: project1,
+    image: roboticGolfArmCover,
+    coverVideo: roboticGolfArmVideo,
     role: "Designer & developer",
     timeline: "Completed",
     highlights: [
@@ -360,7 +378,8 @@ const projects: Project[] = [
       "DukeHub Lite is an Expo and React Native mobile app for browsing Duke courses, inspecting sections, saving favorites, and building conflict-free schedules. It integrates Duke Streamer curriculum data and uses a small Express service for the Duke OAuth authorization-code exchange and app sessions.",
     categories: ["Mobile"],
     stack: ["React Native", "Expo", "TypeScript", "Node.js", "Express", "OAuth/OIDC", "React Native Maps"],
-    image: project2,
+    image: dukeHubLiteCover,
+    imageFit: "contain",
     role: "Mobile developer",
     timeline: "Completed",
     highlights: [
@@ -391,7 +410,11 @@ const projects: Project[] = [
       "P.U.P. is an embedded automation system built to dispense powdered soap consistently for a laboratory testing workflow.",
     categories: ["Embedded Systems"],
     stack: ["Embedded Systems", "Automation", "Sensors"],
-    image: project3,
+    image: pupCover,
+    coverVideo: pupDemoOne,
+    videos: [
+      { src: pupDemoTwo, caption: "A second view of the P.U.P. dispensing mechanism in action." },
+    ],
     role: "Embedded systems developer",
     timeline: "Completed",
     highlights: [
@@ -470,7 +493,10 @@ const projects: Project[] = [
       "An Arduino-based dinosaur robot built for an interactive team game. Three QTI reflectance sensors guide it along a marked course, an analog Hall-effect sensor identifies a hidden magnetic target, and XBee wireless serial links the teams before the robot announces the result with light, motion, sound, and an onboard display.",
     categories: ["Embedded Systems"],
     stack: ["Arduino", "C++", "QTI Sensors", "Hall-effect Sensor", "XBee", "Servo Control"],
-    image: project1,
+    image: dinosaurRobotCover,
+    videos: [
+      { src: dinosaurRobotVideo, caption: "The dinosaur robot navigating its marked course." },
+    ],
     role: "Embedded systems developer",
     timeline: "Completed",
     highlights: [

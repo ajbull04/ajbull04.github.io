@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { Project } from "@/data/projects";
+import ProjectCover from "@/components/ProjectCover";
 
 interface FeaturedProjectProps {
   project: Project;
@@ -26,13 +27,9 @@ const FeaturedProject = ({ project, index }: FeaturedProjectProps) => {
         <div
           className={`overflow-hidden border border-ink/10 bg-paper-deep/70 lg:col-span-7 ${imageFirst ? "" : "lg:order-2"}`}
         >
-          <img
-            src={project.image}
-            alt={project.title}
-            loading="lazy"
-            width={1200}
-            height={750}
-            className="aspect-[16/10] w-full object-contain p-5 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          <ProjectCover
+            project={project}
+            className="aspect-[16/10] w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
         </div>
 

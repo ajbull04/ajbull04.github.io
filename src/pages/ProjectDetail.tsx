@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import projects from "@/data/projects";
+import ProjectCover from "@/components/ProjectCover";
 
 const SubHeading = ({ children }: { children: string }) => (
   <h2 className="font-display text-2xl font-bold text-foreground md:text-3xl">{children}</h2>
@@ -40,8 +41,8 @@ const ProjectDetail = () => {
           <p className="label-mono mt-5 text-muted-foreground">{project.role} · {project.timeline}</p>
         </motion.header>
 
-        <div className="mt-10 border border-ink/10 bg-paper-deep/70">
-          <img src={project.image} alt={project.title} className="max-h-[62vh] w-full object-contain p-6" />
+        <div className="mt-10 overflow-hidden border border-ink/10 bg-ink/95">
+          <ProjectCover project={project} videoControls className="mx-auto max-h-[70vh] w-full" />
         </div>
 
         <div className="mt-14 grid gap-14 lg:grid-cols-12">
@@ -106,6 +107,23 @@ const ProjectDetail = () => {
                 <figure key={image.src} className="border border-ink/15 bg-paper-deep/50 p-4">
                   <img src={image.src} alt={image.alt} loading="lazy" className="w-full object-contain" />
                   {image.caption && <figcaption className="mt-3 font-body text-sm text-muted-foreground">{image.caption}</figcaption>}
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {project.videos && project.videos.length > 0 && (
+          <section className="mt-20">
+            <SubHeading>Project videos</SubHeading>
+            <div className="mt-6 grid gap-8 md:grid-cols-2">
+              {project.videos.map((video) => (
+                <figure key={video.src} className="border border-ink/15 bg-paper-deep/50 p-4">
+                  <video controls playsInline preload="metadata" className="max-h-[70vh] w-full bg-ink object-contain">
+                    <source src={video.src} />
+                    Your browser does not support embedded video.
+                  </video>
+                  {video.caption && <figcaption className="mt-3 font-body text-sm text-muted-foreground">{video.caption}</figcaption>}
                 </figure>
               ))}
             </div>
