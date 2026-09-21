@@ -50,7 +50,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => (
             <span className="px-1 py-1 font-mono text-[10px] text-muted-foreground">+{project.stack.length - 5}</span>
           )}
         </div>
-        <p className="label-mono text-muted-foreground/80">{project.timeline}</p>
+        {/* <p className="label-mono text-muted-foreground/80">{project.timeline}</p> */}
       </div>
     </Link>
   </motion.div>

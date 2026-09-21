@@ -501,7 +501,7 @@ const projects: Project[] = [
       { src: dinosaurRobotVideo, caption: "The dinosaur robot navigating its marked course." },
     ],
     role: "Embedded systems developer",
-    timeline: "Completed",
+    timeline: "",
     highlights: [
       "Converted three QTI reflectance readings into a compact sensor state for left, right, and straight line-following control",
       "Counted course markers and calculated magnetic flux to detect and report the hidden magnet's location",
