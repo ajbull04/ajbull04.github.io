@@ -38,7 +38,7 @@ const ProjectDetail = () => {
         <motion.header initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
           <p className="label-mono border-t border-ink/25 pt-4 text-primary">{project.categories.join(" · ")}</p>
           <h1 className="mt-4 max-w-4xl font-display text-4xl font-extrabold leading-[0.95] text-foreground md:text-6xl">{project.title}</h1>
-          <p className="label-mono mt-5 text-muted-foreground">{project.role} · {project.timeline}</p>
+          <p className="label-mono mt-5 text-muted-foreground">{project.role} </p>
         </motion.header>
 
         <div className="mt-10 overflow-hidden border border-ink/10 bg-ink/95">
